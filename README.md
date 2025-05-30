@@ -26,6 +26,9 @@ mkdir src\test\resources
 mkdir src\test\java\com\codescratcher\demo\base
 mkdir src\test\java\com\codescratcher\demo\test
 mkdir src\test\java\com\codescratcher\demo\utilities
+mkdir src\test\java\com\codescratcher\demo\pages
+mkdir src\test\java\com\codescratcher\demo\listeners
+mkdir src\test\resources\configs
 ```
 
 ### Linux/MacOS Commands

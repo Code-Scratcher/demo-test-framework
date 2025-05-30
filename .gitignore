@@ -20,5 +20,11 @@ gradle-app.setting
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
+# vsCode workspace settings
+.vscode
+
 # Ignore Gradle build output directory
 build
+
+# Ignore .png files in the root directory
+.png

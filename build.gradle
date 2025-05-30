@@ -4,3 +4,63 @@
  * This is a general purpose Gradle build.
  * Learn more about Gradle by exploring our Samples at https://docs.gradle.org/8.9/samples
  */
+plugins {
+    id 'java'
+}
+
+group = 'com.example.demo'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Selenium WebDriver
+    implementation 'org.seleniumhq.selenium:selenium-java:4.15.0'
+    
+    // TestNG
+    testImplementation 'org.testng:testng:7.8.0'
+    
+    // WebDriverManager to handle browser drivers
+    implementation 'io.github.bonigarcia:webdrivermanager:5.6.2'
+    
+    // SLF4J for logging
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+    implementation 'org.slf4j:slf4j-simple:2.0.9'
+    
+    // Apache Commons IO for file operations
+    implementation 'commons-io:commons-io:2.13.0'
+}
+
+test {
+    useTestNG() {
+        useDefaultListeners = true
+        suites 'src/test/resources/configs/testng.xml'
+    }
+
+    // test suit run summary
+    afterSuite { desc, result ->
+            if (!desc.parent) {
+                println "\nTEST RESULT: ${result.resultType}"
+                println "TEST SUMMARY: RAN ${result.testCount} TESTS, " +
+                        "${result.successfulTestCount} SUCCEEDED, " +
+                        "${result.failedTestCount} FAILED, " +
+                        "${result.skippedTestCount} SKIPPED"
+            }
+    }
+
+    // Test logging
+    testLogging {
+        events "STARTED", "PASSED", "FAILED", "SKIPPED", "STANDARD_OUT", "STANDARD_ERROR"
+        showStandardStreams = true // set to true if you want to see console output from logging and print statements
+        exceptionFormat "full" // show full stack trace for exceptions
+        showStackTraces = true // show stack traces for failed tests
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    sourceCompatibility = '11'
+    targetCompatibility = '11'
+}
