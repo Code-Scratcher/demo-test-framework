@@ -11,7 +11,7 @@ This guide explains how to set up the directory structure for the Demo Test Fram
 - Gradle installed
 - Git (optional)
 
-## Project Initialization
+## Project Initialization (Manually without the template)
 
 ### Windows Commands
 ```batch
@@ -44,6 +44,9 @@ mkdir -p src/test/resources
 mkdir -p src/test/java/com/codescratcher/demo/base
 mkdir -p src/test/java/com/codescratcher/demo/test
 mkdir -p src/test/java/com/codescratcher/demo/utilities
+mkdir -p src/test/java/com/codescratcher/demo/pages
+mkdir -p src/test/java/com/codescratcher/demo/listeners
+mkdir -p src/test/resources/configs
 ```
 
 ## Project Structure
@@ -61,8 +64,11 @@ demo-test-framework/
 │       │           └── demo/
 │       │               ├── base/
 │       │               ├── test/
-│       │               └── utilities/
+│       │               ├── utilities/
+│       │               ├── pages/
+│       │               └── listeners/
 │       └── resources/
+│           └── configs/
 ├── .gitignore
 ├── build.gradle
 ├── gradlew
@@ -75,5 +81,6 @@ demo-test-framework/
 - `base/`: Contains base test classes and configurations
 - `test/`: Contains actual test cases
 - `utilities/`: Contains helper classes and utility functions
+- `pages/`: Contains page object model classes
+- `listeners/`: Contains test listeners and reporters
 - `resources/`: Contains test configuration files, test data, etc.
-```
